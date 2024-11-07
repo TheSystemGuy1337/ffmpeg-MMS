@@ -8,3 +8,7 @@ This license does not affect FFmpeg; it only affects this batch script.
 
 FFmpeg-MMS is provided to you, free-of-charge with absolutely NO WARRANTY of any kind, express or implied.
 You are free to modify, redistribute and do whatever you please with the code. I doubt anyone even cares about a batch script anyway, but I'm still granting you that freedom.
+
+I do not know how the GPL or LGPL works. To protect myself from legal liability, FFmpeg-MMS is not bundled with FFmpeg.
+
+You must source a copy of FFmpeg yourself. You may not bundle FFmpeg-MMS with FFmpeg. This license and general disclaimer MUST be added.
