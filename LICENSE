@@ -1,0 +1,9 @@
+Copyright 2024 - TheSystemGuy. Some rights reserved.
+
+General disclaimer: I am not affiliated with, sponsored by or otherwise endorsed by the FFmpeg Project or its developers and contributors.  
+FFmpeg-MMS is an independent project which DOES NOT borrow any code from the FFmpeg project and is only a batch script.
+I’m just a fan of FFmpeg who created a batch script to compress videos to the MMS standard. 
+This license does not affect FFmpeg; it only affects this batch script. 
+
+FFmpeg-MMS is provided to you, free-of-charge with absolutely NO WARRANTY of any kind, express or implied.
+You are free to modify, redistribute and do whatever you please with the code. I doubt anyone even cares about a batch script anyway, but I'm still granting you that freedom.
