@@ -23,22 +23,10 @@ The encoder is constrained to the legacy MMS interoperability profile:
 
 These settings are based on the historical 3GPP/GSMA MMS interoperability profile rather than attempting to reproduce one particular handset's encoder output.
 
-## Filename handling
-
-The old script appended .3gp to the complete input filename, producing names such as:
-
-`video.mp4.3gp`
-
-The current version strips the input extension before creating the output name:
-
-`video.mp4` -> `video.3gp`
-
-If the input is already a .3gp file, the output is written as `video-MMS.3gp` to avoid overwriting the source.
-
 ## Requirements
 
 - Windows
-- FFmpeg available through the PATH environment variable
+- FFmpeg available through the PATH environment variable (optional, but recommended for convenience purposes)
 - An input video file supported by FFmpeg
 
 ## Usage
@@ -46,3 +34,6 @@ If the input is already a .3gp file, the output is written as `video-MMS.3gp` to
 Run `mms.bat` and enter the path to the video file when prompted.
 
 This project targets the **legacy MMS / H.263 era**. It is not intended to reproduce modern RCS or current 3GPP messaging profiles.
+
+
+Portions of this script and README have been rewritten with the assistance of AI tools. The only use of AI was to make this script match the standard and to fix a longstanding bug.
