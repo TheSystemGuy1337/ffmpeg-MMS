@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal DisableDelayedExpansion
 
 set /p "file=Select a video file to convert: "
 
@@ -7,6 +7,9 @@ if not defined file (
     echo No input file was specified.
     exit /b 1
 )
+
+rem Normalize drag-and-drop input by removing one surrounding pair of quotes.
+for /f "delims=" %%F in ("%file%") do set "file=%%~F"
 
 if not exist "%file%" (
     echo Input file not found: "%file%"
