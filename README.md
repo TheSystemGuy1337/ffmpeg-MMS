@@ -2,7 +2,6 @@
 
 A PowerShell script for converting videos to the legacy 3GPP MMS video format.
 
-This project originally used reverse-engineering of an actual iPhone MMS 3GP file. The original script was approximately 85% accurate to the observed file. This revision instead targets a historical standards-oriented MMS video profile: H.263 in a 3GP container with AMR-NB audio.
 
 ## Video profile
 
