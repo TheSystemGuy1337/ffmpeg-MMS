@@ -33,19 +33,6 @@ if ($extension -ieq '.3gp') {
     $output = Join-Path $directory "$baseName-MMS.3gp"
 }
 
-$commonArgs = @(
-    '-i', $inputPath,
-    '-c:v', 'h263',
-    '-b:v', '64k',
-    '-pix_fmt', 'yuv420p',
-    '-r', '15',
-    '-c:a', 'libopencore_amrnb',
-    '-ar', '8000',
-    '-ac', '1',
-    '-b:a', '12.2k',
-    $output
-)
-
 if ($widescreen -match '^(?i:y|yes)$') {
     # 16:9 compatibility pipeline: preserve the widescreen composition inside QCIF.
     $filter = 'scale=176:99,pad=176:144:0:22,setsar=1,setdar=4/3'
