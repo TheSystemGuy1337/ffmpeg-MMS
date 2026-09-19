@@ -1,9 +1,48 @@
 # ffmpeg-MMS
-Simple batch script to convert videos to MMS quality used by the GSM standard which Android users had to endure for over a decade thanks to Apple being Apple. This era of low quality videos are coming to an end with Apple finally adopting RCS instead of hanging onto a 20 year old standard for dear life. This was made using reverse engineering efforts of an actual MMS 3gp file sent by an iPhone using ffprobe. I tried to make it 100% accurate, but I was only able to make it 85% accurate. 
 
-# Known issues
-File extensions are duplicated. This is an issue I tried to fix but was unable to.
+A simple Windows batch script for converting videos to the legacy 3GPP MMS video format.
 
-# How do I even use this?
+This project originally used reverse-engineering of an actual iPhone MMS 3GP file. The original script was approximately 85% accurate to the observed file. This revision instead targets the historical standards-based MMS video profile: H.263 in a 3GP container with AMR-NB audio.
 
-This was designed with ffmpeg being a enviroment variable in mind. Place the batch script along side ffmpeg and run it. Follow the on-screen instuctions.
+## Video profile
+
+The encoder is constrained to the legacy MMS interoperability profile:
+
+- Container: 3GP
+- Video codec: H.263
+- Resolution: 176x144 (QCIF)
+- Pixel aspect ratio: 12:11
+- Display aspect ratio: 4:3
+- Pixel format: YUV 4:2:0
+- Frame rate: 15 fps
+- Video bitrate: 64 kbps
+- Audio codec: AMR-NB
+- Audio sample rate: 8 kHz
+- Audio channels: mono
+- Audio bitrate: 12.2 kbps
+
+These settings are based on the historical 3GPP/GSMA MMS interoperability profile rather than attempting to reproduce one particular handset's encoder output.
+
+## Filename handling
+
+The old script appended .3gp to the complete input filename, producing names such as:
+
+`video.mp4.3gp`
+
+The current version strips the input extension before creating the output name:
+
+`video.mp4` -> `video.3gp`
+
+If the input is already a .3gp file, the output is written as `video-MMS.3gp` to avoid overwriting the source.
+
+## Requirements
+
+- Windows
+- FFmpeg available through the PATH environment variable
+- An input video file supported by FFmpeg
+
+## Usage
+
+Run `mms.bat` and enter the path to the video file when prompted.
+
+This project targets the **legacy MMS / H.263 era**. It is not intended to reproduce modern RCS or current 3GPP messaging profiles.
