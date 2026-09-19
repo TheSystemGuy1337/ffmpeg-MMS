@@ -1,4 +1,28 @@
 @echo off
-set /p file=Select a video file to convert: 
-ffmpeg -i %file% -b:a 12.20k -acodec libopencore_amrnb -ar 8000 -ac 1 -b:v 103k -vf scale=176x144,setsar=12/11,setdar=4/3 -pix_fmt yuv420p -r 10 %file%.3gp
-echo Your output file is: %file%.3gp
+setlocal
+
+set /p "file=Select a video file to convert: "
+
+if not defined file (
+    echo No input file was specified.
+    exit /b 1
+)
+
+if not exist "%file%" (
+    echo Input file not found: "%file%"
+    exit /b 1
+)
+
+for %%F in ("%file%") do (
+    set "output=%%~dpnF.3gp"
+    if /I "%%~xF"==".3gp" set "output=%%~dpnF-MMS.3gp"
+)
+
+ffmpeg -i "%file%" -c:v h263 -b:v 64k -vf "scale=176:144,setsar=12/11,setdar=4/3" -pix_fmt yuv420p -r 15 -c:a libopencore_amrnb -ar 8000 -ac 1 -b:a 12.2k "%output%"
+
+if errorlevel 1 (
+    echo Conversion failed.
+    exit /b 1
+)
+
+echo Your output file is: "%output%"
